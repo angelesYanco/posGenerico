@@ -1,21 +1,15 @@
 <header class="main-header">
-
     <!-- *****************************
     LOGOTIPO
     ******************************* -->
-
     <a href="" class="logo">
-
         <!-- logo mini -->
         <span class="logo-mini">
-
             <img src="vistas/img/plantilla/icono-blanco.png" alt="" 
             class="img-responsive" style="padding:10px">
         </span>
-
         <!-- logo normal -->
         <span class="logo-lg">
-
             <img src="vistas/img/plantilla/logo-blanco-lineal.png" alt="" 
             class="img-responsive" style="padding:10px 0px">
         </span>
@@ -39,19 +33,14 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
                         <img src="vistas/img/usuarios/default/anonymous.png" class="user-image">
-
                         <span class="hidden-xs">Usuario Administrador</span>
                     </a>
 
                     <!-- Dropdown -->
                     <ul class="dropdown-menu">
-
                         <li class="user-body">
-
                                 <a href="" class="btn btn-default btn-flat">Salir</a>
-
                         </li>
 
                     </ul>

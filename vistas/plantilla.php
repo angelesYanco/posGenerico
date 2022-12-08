@@ -53,12 +53,17 @@
 CUERPO DOCUMENTO
 ==============================-->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-
   <!-- Site wrapper -->
   <div class="wrapper">
-
     <?php
-        include "modulos/cabecera.php";
+    /*== CABECERA ==*/
+      include "modulos/cabecera.php";
+    /*== MENU ==*/
+      include "modulos/menu.php";
+    /*== CONTENIDO ==*/
+      include "modulos/contenido.php";
+    /*== FOOTER ==*/
+      include "modulos/footer.php"
     ?>
 
   </div>
