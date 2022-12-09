@@ -2,7 +2,7 @@
     <!-- *****************************
     LOGOTIPO
     ******************************* -->
-    <a href="" class="logo">
+    <a href="inicio" class="logo">
         <!-- logo mini -->
         <span class="logo-mini">
             <img src="vistas/img/plantilla/icono-blanco.png" alt="" 
