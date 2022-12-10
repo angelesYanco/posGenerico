@@ -31,6 +31,14 @@
         </div>
         <!-- /.col -->
       </div>
+
+      <?php
+
+      $login = new ControladorUsuarios();
+      $login -> ctrIngresoUsuarios();
+
+      ?>
+
     </form>
 
     </div>
