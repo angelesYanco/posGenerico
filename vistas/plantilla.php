@@ -54,41 +54,47 @@
 <!--============================= 
 CUERPO DOCUMENTO
 ==============================-->
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-  <!-- Site wrapper -->
-  <div class="wrapper">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
+ 
     <?php
-    /*== CABECERA ==*/
-      include "modulos/cabecera.php";
-    /*== MENU ==*/
-      include "modulos/menu.php";
-    
-    if(isset($_GET["ruta"])){
 
-      if($_GET["ruta"] == "inicio" ||
-         $_GET["ruta"] == "usuarios" ||
-         $_GET["ruta"] == "categorias" ||
-         $_GET["ruta"] == "productos" ||
-         $_GET["ruta"] == "clientes" ||
-         $_GET["ruta"] == "ventas" ||
-         $_GET["ruta"] == "crear-venta" ||
-         $_GET["ruta"] == "reportes" ){
+    if(isset($_SESSION["iniciarSesion"]) && isset($_SESSION["iniciarSesion"]) == "ok"){
+      echo '<div class="wrapper">';
 
-        include "modulos/".$_GET["ruta"].".php";
-      }else{
-
-        include "modulos/404.php";
-      }
-    }else{
-      include "modulos/inicio.php";
-    }
+      /*== CABECERA ==*/
+        include "modulos/cabecera.php";
+      /*== MENU ==*/
+        include "modulos/menu.php";
       
-    /*== FOOTER ==*/
-      include "modulos/footer.php"
-    ?>
+      if(isset($_GET["ruta"])){
+  
+        if($_GET["ruta"] == "inicio" ||
+           $_GET["ruta"] == "usuarios" ||
+           $_GET["ruta"] == "categorias" ||
+           $_GET["ruta"] == "productos" ||
+           $_GET["ruta"] == "clientes" ||
+           $_GET["ruta"] == "ventas" ||
+           $_GET["ruta"] == "crear-venta" ||
+           $_GET["ruta"] == "reportes" ){
+  
+          include "modulos/".$_GET["ruta"].".php";
+        }else{
+  
+          include "modulos/404.php";
+        }
+      }else{
+        include "modulos/inicio.php";
+      }
+        
+      /*== FOOTER ==*/
+        include "modulos/footer.php";
+  
+      echo '</div>';
+    }else{
+      include 'modulos/login.php';
+    }
 
-  </div>
-  <!-- ./wrapper -->
+    ?>
 
 <script src="vistas/js/plantilla.js"></script>
 </body>
