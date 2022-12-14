@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +64,7 @@ CUERPO DOCUMENTO
  
     <?php
 
-    if(isset($_SESSION["iniciarSesion"]) && isset($_SESSION["iniciarSesion"]) == "ok"){
+    if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
       echo '<div class="wrapper">';
 
       /*== CABECERA ==*/

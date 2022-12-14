@@ -15,17 +15,21 @@ class ControladorUsuarios{
 
                 $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
-                var_dump($respuesta["usuario"]);
+                //var_dump($respuesta["usuario"]);
                 
+                if($respuesta["usuario"] == $_POST["ingUsuario"] &&
+                    $respuesta["password"] == $_POST["ingPassword"]){
 
-                // if($respuesta("usuario") == $_POST["ingUsuaro"] &&
-                //     $respuesta("password") == $_POST["ingPassword"]){
+                    $_SESSION["iniciarSesion"] = "ok";
 
-                //     echo '<br><div class"alert alert-success">Bien vendo al sistema.</div>';
-                // }else{
+                    echo '<script>
+                    
+                        window.location = "inicio";
+                    </script>';
+                }else{
 
-                //     echo '<br><div class"alert alert-danger">Error al ingresar, vuelva a intentarlo</div>';
-                // }
+                    echo '<br><div class"alert alert-danger">Error al ingresar, vuelva a intentarlo</div>';
+                }
             }
         }
     }

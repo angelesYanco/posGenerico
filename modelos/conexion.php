@@ -1,6 +1,6 @@
 <?php
 
-class Conexion{
+class ConexionBD{
 
     static public function conectar(){
 
