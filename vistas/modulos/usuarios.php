@@ -10,7 +10,9 @@
     </ol>
   </section>
 
-  <!-- Main content -->
+  <!-- Main content 
+  Cuadricula con los datos de los usuarios
+  -->
   <section class="content">
 
     <!-- Default box -->
@@ -45,19 +47,42 @@
               <td>Administrador</td>
               <td><button class="btn btn-success btn-xs">Activado</button></td>
               <td>2017-12-11 12:05:32</td>
-              <td></td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="box-footer">
-        Footer
-      </div>
-      <!-- /.box-footer-->
     </div>
     <!-- /.box -->
-
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<!--==================================== 
+Ventana modal para agregar usuario
+=====================================-->
+<!-- Modal -->
+<div id="modalAgregarUsuario" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
