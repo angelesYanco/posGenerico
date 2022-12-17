@@ -9,5 +9,9 @@ class ConexionBD{
         $link->exec("set names utf8");
 
         return $link;
+
+        $link->query('KILL CONNECTION_ID()');
+
+        $link = null;
     }
 }

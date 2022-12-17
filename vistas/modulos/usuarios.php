@@ -29,14 +29,14 @@
         <table class="table table-bordered table-striped dt-responsive tablas">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Nombre</th>
-              <th>Usuario</th>
-              <th>Foto</th>
-              <th>Perfil</th>
-              <th>Estado</th>
-              <th>Ultimo login</th>
-              <th>Acciones</th>
+              <th style="width:5px">#</th>
+              <th style="width:220px">Nombre completo</th>
+              <th style="width:60px">Usuario</th>
+              <th style="width:50px">Foto</th>
+              <th style="width:60px">Perfil</th>
+              <th style="width:50px">Estado</th>
+              <th style="width:100px">Ultimo login</th>
+              <th style="width:180px">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -73,6 +73,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
+
         <div class="modal-header" style="background:#3c8dbc; color:white">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Agregar usuario</h4>
@@ -80,14 +81,11 @@
 
         <div class="modal-body">        
           <div class="box-body">
-          <!-- 
-            Entrada para datos personales 
-          -->
             <!-- Nombre -->
             <div class="form-group">            
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Nombre" required>
+                <input type="text" class="form-control input-sm" name="nuevoNombre" placeholder="Nombre" required>
               </div>
             </div>
 
@@ -95,7 +93,7 @@
             <div class="form-group">
               <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoApellidoPaterno" placeholder="Apellido paterno" required>
+                  <input type="text" class="form-control input-sm" name="nuevoApellidoPaterno" placeholder="Apellido paterno" required>
               </div>
             </div>
 
@@ -103,21 +101,24 @@
             <div class="form-group">
               <div class="input-group">    
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoApellidoMaterno" placeholder="Apellido materno" required>
+                  <input type="text" class="form-control input-sm" name="nuevoApellidoMaterno" placeholder="Apellido materno" required>
               </div>
-            </div>  
+            </div>
 
-          <!-- 
-            Entrada para datos en el sistema 
-          -->
+            <!-- Usuario -->
             <div class="form-group">
               <div class="input-group">
-                <!-- Usuario -->
+
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Usuario" required>
-                <!-- Password -->
+                <input type="text" class="form-control input-sm" name="nuevoUsuario" placeholder="Usuario" required>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <div class="input-group">
+                
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Contraseña" required>
+                <input type="password" class="form-control input-sm" name="nuevoPassword" placeholder="Contraseña" required>
               </div>
             </div>
 
@@ -129,9 +130,9 @@
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                 <select class="form-control input-lg" name="nuevoPerfil">
                   <option value="">Seleccionar perfil</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Especial">Especial</option>
-                  <option value="Vendedor">Vendedor</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Especial</option>
+                  <option value="3">Vendedor</option>
                 </select>
               </div>
             </div>
@@ -150,15 +151,24 @@
                 Peso máximo de la foto: 200 MB
               </p>
             </div>
+          </div>
         </div>
-        <!-- 
-          Footer
-        -->
+
+        <!-- Footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Guardar usuario</button>
         </div>
+
+        <?php
+
+        $crearUsuario = new ControladorUsuarios();
+        $crearUsuario -> ctrCrearUsuario();
+
+        ?>
+
       </form>
+
     </div>
   </div>
 </div>
