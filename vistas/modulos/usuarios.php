@@ -140,11 +140,6 @@
               Entrada para seleccion de perfil 
             -->
             <div class="form-group">
-              <!-- <div class="panel">SUBIR FOTO
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
-                <p class="help-block">Peso máximo de la foto: 200 MB</p>
-                <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
-              </div> -->
               <input type="file" class="nuevaFoto" name="nuevaFoto">
               <p class="help-block">Peso máximo de la foto: 2 MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="60px">

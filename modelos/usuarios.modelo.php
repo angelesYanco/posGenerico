@@ -19,8 +19,8 @@ class ModeloUsuarios{
 
     static public function mdIngresarUsuarios($tabla, $datos){
 
-        $stmt = ConexionBD::conectar()->prepare("INSERT INTO $tabla(nombre, apellido_paterno, apellido_materno, usuario, password, perfil)
-        VALUES (:nombre, :apellidoPaterno, :apellidoMaterno, :usuario, :password, :perfil)");
+        $stmt = ConexionBD::conectar()->prepare("INSERT INTO $tabla(nombre, apellido_paterno, apellido_materno, usuario, password, perfil, foto)
+        VALUES (:nombre, :apellidoPaterno, :apellidoMaterno, :usuario, :password, :perfil, :foto)");
 
         $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt -> bindParam(":apellidoPaterno", $datos["apellidoPaterno"], PDO::PARAM_STR);
@@ -28,6 +28,7 @@ class ModeloUsuarios{
         $stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
         $stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
         $stmt -> bindParam(":perfil", $datos["perfil"], PDO::PARAM_INT);
+        $stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
         
         if($stmt -> execute()){
 

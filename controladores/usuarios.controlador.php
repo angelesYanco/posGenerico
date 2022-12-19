@@ -44,6 +44,72 @@ class ControladorUsuarios{
             preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
             preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"]) ){
 
+                $ruta = "";
+
+                // Validar imagenes
+                if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+
+                    // Obtener ancho y largo
+                    list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+
+                    $nuevoAncho = 500;
+                    $nuevoAlto = 500;
+
+                    // Creando el directorio para guardar la foto
+                    $directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
+
+                    if(!file_exists($directorio)){
+                        mkdir($directorio, 0755);
+                    }
+
+                    // Damos tratamiento en base al tipo de imagen JPG
+                    if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+                        $aleatorio = mt_rand(100, 999);
+                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+
+                        $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized(
+                            $destino,
+                            $origen,
+                            0,
+                            0,
+                            0,
+                            0,
+                            $nuevoAncho,
+                            $nuevoAlto,
+                            $ancho,
+                            $alto
+                        );
+                        imagejpeg($destino, $ruta);
+                    }
+
+                    // Damos tratamiento en base al tipo de imagen PNG
+                    if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+                        $aleatorio = mt_rand(100, 999);
+                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+
+                        $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized(
+                            $destino,
+                            $origen,
+                            0,
+                            0,
+                            0,
+                            0,
+                            $nuevoAncho,
+                            $nuevoAlto,
+                            $ancho,
+                            $alto
+                        );
+                        imagejpeg($destino, $ruta);
+                    }
+
+                }
+
                 $tabla = "usuarios";
                 $datos = array(
                     "nombre" => $_POST["nuevoNombre"],
@@ -52,6 +118,7 @@ class ControladorUsuarios{
                     "usuario" => $_POST["nuevoUsuario"],
                     "password" => $_POST["nuevoPassword"],
                     "perfil" => $_POST["nuevoPerfil"],
+                    "foto" => $ruta
                 );
 
                 $respuesta = ModeloUsuarios::mdIngresarUsuarios($tabla, $datos);
