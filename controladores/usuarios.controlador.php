@@ -8,17 +8,19 @@ class ControladorUsuarios{
 
             if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) ||
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
-                    
+
+                // Encriptar contraseña                
+                $encriptar = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
+
                 $tabla = "usuarios";
+
                 $item = "usuario";
                 $valor = $_POST["ingUsuario"];
 
                 $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
-                //var_dump($respuesta["usuario"]);
-                
                 if($respuesta["usuario"] == $_POST["ingUsuario"] &&
-                    $respuesta["password"] == $_POST["ingPassword"]){
+                    $respuesta["password"] == $encriptar){
 
                     $_SESSION["iniciarSesion"] = "ok";
 
@@ -111,12 +113,15 @@ class ControladorUsuarios{
                 }
 
                 $tabla = "usuarios";
+
+                // Encriptar contraseña
+                $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$usesomesillystringforsalt$');
                 $datos = array(
                     "nombre" => $_POST["nuevoNombre"],
                     "apellidoPaterno" => $_POST["nuevoApellidoPaterno"],
                     "apellidoMaterno" => $_POST["nuevoApellidoMaterno"],
                     "usuario" => $_POST["nuevoUsuario"],
-                    "password" => $_POST["nuevoPassword"],
+                    "password" => $encriptar,
                     "perfil" => $_POST["nuevoPerfil"],
                     "foto" => $ruta
                 );
