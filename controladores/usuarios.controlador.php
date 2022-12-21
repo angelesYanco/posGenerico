@@ -23,6 +23,11 @@ class ControladorUsuarios{
                     $respuesta["password"] == $encriptar){
 
                     $_SESSION["iniciarSesion"] = "ok";
+                    $_SESSION["id"] = $respuesta["id"];
+                    $_SESSION["nombreCompleto"] = $respuesta["nombre"].' '.$respuesta["apellidoPaterno"].' '.$respuesta["apellidoMaterno"];
+                    $_SESSION["usuario"] = $respuesta["usuario"];
+                    $_SESSION["foto"] = $respuesta["foto"];
+                    $_SESSION["perfil"] = $respuesta["perfil"];
 
                     echo '<script>
                     
@@ -30,7 +35,7 @@ class ControladorUsuarios{
                     </script>';
                 }else{
 
-                    echo '<br><div class"alert alert-danger">Error al ingresar, vuelva a intentarlo</div>';
+                    echo '<br><div class="alert alert-danger">Error al ingresar, vuelva a intentarlo</div>';
                 }
             }
         }
