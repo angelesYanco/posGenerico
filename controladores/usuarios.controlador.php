@@ -59,8 +59,8 @@ class ControladorUsuarios{
                     // Obtener ancho y largo
                     list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
 
-                    $nuevoAncho = 500;
-                    $nuevoAlto = 500;
+                    $nuevoAncho = 50;
+                    $nuevoAlto = 50;
 
                     // Creando el directorio para guardar la foto
                     $directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
@@ -184,5 +184,14 @@ class ControladorUsuarios{
                 </script>';
             }
         }
+    }
+
+    static public function ctrMostrarUsuario($item, $valor){
+
+        $tabla = "usuarios";
+
+        $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+
+        return $respuesta;
     }
 }

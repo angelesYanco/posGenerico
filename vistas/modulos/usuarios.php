@@ -26,35 +26,60 @@
       </div>
 
       <div class="box-body">
-        <table class="table table-bordered table-striped dt-responsive tablas">
+        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
           <thead>
             <tr>
-              <th style="width:5px">#</th>
-              <th style="width:220px">Nombre completo</th>
-              <th style="width:60px">Usuario</th>
-              <th style="width:50px">Foto</th>
-              <th style="width:60px">Perfil</th>
-              <th style="width:50px">Estado</th>
-              <th style="width:100px">Ultimo login</th>
-              <th style="width:180px">Acciones</th>
+              <th style="width:10px">#</th>
+              <th>Nombre completo</th>
+              <th>Usuario</th>
+              <th>Foto</th>
+              <th>Perfil</th>
+              <th>Estado</th>
+              <th>Ultimo login</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width=""></td>
-              <td>Administrador</td>
-              <td><button class="btn btn-success btn-xs">Activado</button></td>
-              <td>2017-12-11 12:05:32</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-              </td>
-            </tr>
+            <?php
+              $item = null;
+              $valor = null;
+
+              $usuarios = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+
+              foreach($usuarios as $key => $value){
+
+                echo 
+                  '<tr>
+                  <td>'.$value["id_usuario"].'</td>
+                  <td>'.$value["nombre"].' '.$value["apellido_paterno"].' '.$value["apellido_materno"].'</td>
+                  <td>'.$value["usuario"].'</td>';
+                
+                if($value["foto"] != ""){
+
+                  echo '<td><img src="'.$value["foto"].'" class="img-thumbnail" width=""></td>';
+                }else{
+                  echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width=""></td>';
+                }
+                
+                echo
+                  '<td>'.$value["perfil_nombre"].'</td>';
+
+                if($value["estado"] < 1){
+                  echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="0">Desactivado</button></td>';
+                }else{
+                  echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="1">Activado</button></td>';
+                }
+                  
+                echo '<td>'.$value["fecha_ultimo_login"].'</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                    </div>
+                  </td>
+                </tr>';              
+              }
+            ?>
           </tbody>
         </table>
       </div>

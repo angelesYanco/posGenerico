@@ -6,13 +6,22 @@ class ModeloUsuarios{
 
     static public function mdlMostrarUsuarios($tabla, $item, $valor){
 
-        $stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+        if($item != null){
 
-        $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt -> execute();
+    
+            return $stmt -> fetch();            
+        }else{
 
-        $stmt -> execute();
+            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM usuarios a, usuarios_perfiles b WHERE a.perfil = b.perfil_id");
+            $stmt -> execute();
+    
+            return $stmt -> fetchAll();
+        }
 
-        return $stmt -> fetch();
+
 
         $stmt = null;
     }
