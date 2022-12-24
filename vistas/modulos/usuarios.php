@@ -10,9 +10,7 @@
     </ol>
   </section>
 
-  <!-- Main content 
-  Tabla con los datos de los usuarios
-  -->
+  <!-- Main content: Tabla con los datos de los usuarios -->
   <section class="content">
 
     <!-- Default box -->
@@ -73,7 +71,8 @@
                 echo '<td>'.$value["fecha_ultimo_login"].'</td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id_usuario"].'" data-toggle="modal" data-target="#modalEditarUsuario">
+                        <i class="fa fa-pencil"></i></button>
                       <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                     </div>
                   </td>
@@ -91,9 +90,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!--
-  Ventana modal para agregar usuario
--->
+<!-- Inicia - Ventana modal: agregar usuario -->
 <div id="modalAgregarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -147,9 +144,7 @@
               </div>
             </div>
 
-            <!-- 
-              Entrada para seleccion de perfil 
-            -->
+            <!-- Entrada para seleccion de perfil -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
@@ -161,9 +156,7 @@
                 </select>
               </div>
             </div>
-            <!-- 
-              Entrada para seleccion de perfil 
-            -->
+            <!-- Entrada para seleccion de perfil -->
             <div class="form-group">
               <input type="file" class="nuevaFoto" name="nuevaFoto">
               <p class="help-block">Peso máximo de la foto: 2 MB</p>
@@ -171,7 +164,6 @@
             </div>
           </div>
         </div>
-
         <!-- Footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
@@ -184,10 +176,100 @@
         $crearUsuario -> ctrCrearUsuario();
 
         ?>
-
       </form>
-
     </div>
   </div>
 </div>
+<!-- Termina - Ventana modal: agregar usuario -->
 
+<!-- Inicia: Ventana modal editar usuario -->
+<div id="modalEditarUsuario" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form role="form" method="post" enctype="multipart/form-data">
+
+        <div class="modal-header" style="background:#3c8dbc; color:white">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar usuario</h4>
+        </div>
+
+        <div class="modal-body">        
+          <div class="box-body">
+            <!-- Nombre -->
+            <div class="form-group">            
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control input-sm" id="editarNombre" name="editarNombre" value="" required>
+              </div>
+            </div>
+
+            <!-- Apellido Paterno -->
+            <div class="form-group">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <input type="text" class="form-control input-sm" name="editarApellidoPaterno" value="" required>
+              </div>
+            </div>
+
+            <!-- Apellido Materno -->
+            <div class="form-group">
+              <div class="input-group">    
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <input type="text" class="form-control input-sm" name="editarApellidoMaterno" values="" required>
+              </div>
+            </div>
+
+            <!-- Usuario -->
+            <div class="form-group">
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                <input type="text" class="form-control input-sm" id="editarUsuario" name="editarUsuario" value="" required>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <div class="input-group">
+                
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control input-sm" name="editarPassword" placeholder="Escriba la nueva contraseña" required>
+              </div>
+            </div>
+
+            <!-- Entrada para seleccion de perfil -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <select class="form-control input-lg" name="editarPerfil">
+                  <option value="" id="editarPerfil"></option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Especial</option>
+                  <option value="3">Vendedor</option>
+                </select>
+              </div>
+            </div>
+            <!-- Entrada para seleccion de perfil -->
+            <div class="form-group">
+              <input type="file" class="nuevaFoto" name="editarFoto">
+              <p class="help-block">Peso máximo de la foto: 2 MB</p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="60px">
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Modificar usuario</button>
+        </div>
+
+        <?php
+
+        //$crearUsuario = new ControladorUsuarios();
+        //$crearUsuario -> ctrModificarUsuario();
+
+        ?>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Termina: Ventana modal editar usuario -->
