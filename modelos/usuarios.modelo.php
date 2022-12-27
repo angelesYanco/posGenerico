@@ -8,7 +8,9 @@ class ModeloUsuarios{
 
         if($item != null){
 
-            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            //$stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM usuarios a, usuarios_perfiles b WHERE a.perfil = b.perfil_id and $item = :$item");
+            
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt -> execute();
     

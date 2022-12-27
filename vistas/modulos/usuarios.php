@@ -16,14 +16,15 @@
 
     <!-- Default box -->
     <div class="box">
-      <div class="box-header with-border">
 
+      <!-- Agregar usuario -->
+      <div class="box-header with-border">
       <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
         Agregar usuario
       </button>
-
       </div>
 
+      <!-- Detalle de usuarios -->
       <div class="box-body">
         <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
           <thead>
@@ -69,17 +70,17 @@
                   echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="1">Activado</button></td>';
                 }
                   
-                echo '<td>'.$value["fecha_ultimo_login"].'</td>
+                echo '<td>'.$value["fecha_ultimo_login"].'</td>';
 
-                  <td>
+                echo 
+                  '<td>
                     <div class="btn-group">
                       <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id_usuario"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
 
                       <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                     </div>
-                  </td>
-                
-                  </tr>';              
+                  </td>                
+                </tr>';              
               }
             ?>
           </tbody>
@@ -211,7 +212,7 @@
             <div class="form-group">
               <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-sm" name="editarApellidoPaterno" value="" required>
+                  <input type="text" class="form-control input-sm" id="editarApellidoPaterno" name="editarApellidoPaterno" value="" required>
               </div>
             </div>
 
@@ -219,7 +220,7 @@
             <div class="form-group">
               <div class="input-group">    
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-sm" name="editarApellidoMaterno" values="" required>
+                  <input type="text" class="form-control input-sm" id="editarApellidoMaterno" name="editarApellidoMaterno" values="" required>
               </div>
             </div>
 
@@ -271,8 +272,8 @@
 
         <?php
 
-        //$crearUsuario = new ControladorUsuarios();
-        //$crearUsuario -> ctrModificarUsuario();
+        $crearUsuario = new ControladorUsuarios();
+        $crearUsuario -> ctrCrearUsuario();
 
         ?>
       </form>

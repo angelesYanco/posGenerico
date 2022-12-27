@@ -44,14 +44,21 @@ $(".nuevaFoto").change(function(){
             $(".previsualizar").attr("src", rutaImagen);
         })
     }
-})
+});
+
+// const btnEditar = document.querySelector('.btnEditarUsuario');
+// btnEditar.addEventListener('click', function(evento){
+
+//     console.log(evento);
+//     evento.preventDefault();
+//     console.log('Enviando Formulario');
+// });
 
 // Editar usuario
-//$(".btnEditarUsuario").click(function(){
-$(document).on("click",".btnEditarUsuario", function(){
+$(".btnEditarUsuario").click(function(){
 
     var idUsuario = $(this).attr("idUsuario");
-    console.log("idUsuarios", idUsuario);
+    //console.log("idUsuarios", idUsuario);
 
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
@@ -65,13 +72,13 @@ $(document).on("click",".btnEditarUsuario", function(){
         contentType: false,
         processData: false,
         dataType: "json",
-        succes: function(respuesta){
+        success: function(respuesta){
 
             $("#editarNombre").val(respuesta["nombre"]);
+            $("#editarApellidoPaterno").val(respuesta["apellido_paterno"]);
+            $("#editarApellidoMaterno").val(respuesta["apellido_materno"]);
             $("#editarUsuario").val(respuesta["usuario"]);
-            $("#editarPerfil").html(respuesta["perfil"]);
-
+            $("#editarPerfil").html(respuesta["perfil_nombre"]);
         }
     })
-    
-})
+});
