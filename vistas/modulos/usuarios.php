@@ -4,6 +4,7 @@
     <h1>
       Administrar usuarios
     </h1>
+
     <ol class="breadcrumb">
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       <li class="active">Administrar usuarios</li>
@@ -69,14 +70,16 @@
                 }
                   
                 echo '<td>'.$value["fecha_ultimo_login"].'</td>
+
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id_usuario"].'" data-toggle="modal" data-target="#modalEditarUsuario">
-                        <i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id_usuario"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+
                       <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                     </div>
                   </td>
-                </tr>';              
+                
+                  </tr>';              
               }
             ?>
           </tbody>
@@ -195,6 +198,7 @@
 
         <div class="modal-body">        
           <div class="box-body">
+
             <!-- Nombre -->
             <div class="form-group">            
               <div class="input-group">
@@ -227,6 +231,7 @@
                 <input type="text" class="form-control input-sm" id="editarUsuario" name="editarUsuario" value="" required>
               </div>
             </div>
+
             <!-- Password -->
             <div class="form-group">
               <div class="input-group">
@@ -248,12 +253,14 @@
                 </select>
               </div>
             </div>
+
             <!-- Entrada para seleccion de perfil -->
             <div class="form-group">
               <input type="file" class="nuevaFoto" name="editarFoto">
               <p class="help-block">Peso máximo de la foto: 2 MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="60px">
             </div>
+
           </div>
         </div>
         <!-- Footer -->

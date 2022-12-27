@@ -21,12 +21,10 @@ class ModeloUsuarios{
             return $stmt -> fetchAll();
         }
 
-
-
         $stmt = null;
     }
 
-    static public function mdIngresarUsuarios($tabla, $datos){
+    static public function mdlIngresarUsuarios($tabla, $datos){
 
         $stmt = ConexionBD::conectar()->prepare("INSERT INTO $tabla(nombre, apellido_paterno, apellido_materno, usuario, password, perfil, foto)
         VALUES (:nombre, :apellidoPaterno, :apellidoMaterno, :usuario, :password, :perfil, :foto)");

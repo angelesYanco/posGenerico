@@ -3,7 +3,7 @@
 $(".nuevaFoto").change(function(){
 
     var imagen = this.files[0];
-    console.log("imagen", imagen);
+    //console.log("imagen", imagen);
 
     //Valida extensiones permitidas
     if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
@@ -47,9 +47,11 @@ $(".nuevaFoto").change(function(){
 })
 
 // Editar usuario
-$(".btnEditarUsuario").click(function(){
+//$(".btnEditarUsuario").click(function(){
+$(document).on("click",".btnEditarUsuario", function(){
 
     var idUsuario = $(this).attr("idUsuario");
+    console.log("idUsuarios", idUsuario);
 
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
@@ -67,7 +69,9 @@ $(".btnEditarUsuario").click(function(){
 
             $("#editarNombre").val(respuesta["nombre"]);
             $("#editarUsuario").val(respuesta["usuario"]);
-            $("#editarPerfil").val(respuesta["perfil"]);
+            $("#editarPerfil").html(respuesta["perfil"]);
+
         }
     })
+    
 })

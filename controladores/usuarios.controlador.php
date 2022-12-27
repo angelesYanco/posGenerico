@@ -23,8 +23,8 @@ class ControladorUsuarios{
                     $respuesta["password"] == $encriptar){
 
                     $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id"];
-                    $_SESSION["nombreCompleto"] = $respuesta["nombre"].' '.$respuesta["apellidoPaterno"].' '.$respuesta["apellidoMaterno"];
+                    $_SESSION["id"] = $respuesta["id_usuario"];
+                    $_SESSION["nombreCompleto"] = $respuesta["nombre"].' '.$respuesta["apellido_paterno"].' '.$respuesta["apellido_materno"];
                     $_SESSION["usuario"] = $respuesta["usuario"];
                     $_SESSION["foto"] = $respuesta["foto"];
                     $_SESSION["perfil"] = $respuesta["perfil"];
@@ -131,7 +131,7 @@ class ControladorUsuarios{
                     "foto" => $ruta
                 );
 
-                $respuesta = ModeloUsuarios::mdIngresarUsuarios($tabla, $datos);
+                $respuesta = ModeloUsuarios::mdlIngresarUsuarios($tabla, $datos);
 
                 if($respuesta == "ok"){
 
