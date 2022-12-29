@@ -229,7 +229,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-sm" id="editarUsuario" name="editarUsuario" value="" required>
+                <input type="text" class="form-control input-sm" id="editarUsuario" name="editarUsuario" value="" readonly>
               </div>
             </div>
 
@@ -239,6 +239,8 @@
                 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 <input type="password" class="form-control input-sm" name="editarPassword" placeholder="Escriba la nueva contraseña" required>
+
+                <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
             </div>
 
@@ -255,11 +257,12 @@
               </div>
             </div>
 
-            <!-- Entrada para seleccion de perfil -->
+            <!-- Entrada para seleccion foto -->
             <div class="form-group">
               <input type="file" class="nuevaFoto" name="editarFoto">
               <p class="help-block">Peso máximo de la foto: 2 MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="60px">
+              <input type="hidden" name="fotoActual" id="fotoActual">
             </div>
 
           </div>
@@ -272,8 +275,8 @@
 
         <?php
 
-        $crearUsuario = new ControladorUsuarios();
-        $crearUsuario -> ctrCrearUsuario();
+        $editarUsuario = new ControladorUsuarios();
+        $editarUsuario -> ctrEditarUsuario();
 
         ?>
       </form>
