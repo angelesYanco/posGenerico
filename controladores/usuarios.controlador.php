@@ -72,8 +72,8 @@ class ControladorUsuarios{
                     // Damos tratamiento en base al tipo de imagen JPG
                     if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
 
-                        $aleatorio = mt_rand(100, 999);
-                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+                        $aleatorio = date("YmdHis");
+                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."_".$aleatorio.".jpg";
 
                         $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -95,8 +95,8 @@ class ControladorUsuarios{
                     // Damos tratamiento en base al tipo de imagen PNG
                     if($_FILES["nuevaFoto"]["type"] == "image/png"){
 
-                        $aleatorio = mt_rand(100, 999);
-                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+                        $aleatorio = date("YmdHis");;
+                        $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."_".$aleatorio.".png";
 
                         $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -234,8 +234,8 @@ class ControladorUsuarios{
                     // Damos tratamiento en base al tipo de imagen JPG
                     if($_FILES["editarFoto"]["type"] == "image/jpeg"){
 
-                        $aleatorio = mt_rand(100, 999);
-                        $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".jpg";
+                        $aleatorio = date("YmdHis");
+                        $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."_".$aleatorio.".jpg";
 
                         $origen = imagecreatefromjpeg($_FILES["editarFoto"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -257,8 +257,8 @@ class ControladorUsuarios{
                     // Damos tratamiento en base al tipo de imagen PNG
                     if($_FILES["editarFoto"]["type"] == "image/png"){
 
-                        $aleatorio = mt_rand(100, 999);
-                        $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".png";
+                        $aleatorio = date("YmdHis");
+                        $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."_".$aleatorio.".png";
 
                         $origen = imagecreatefrompng($_FILES["editarFoto"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
