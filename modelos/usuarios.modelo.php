@@ -4,6 +4,8 @@ require_once "conexion.php";
 
 class ModeloUsuarios{
 
+    public $query = "";
+
     static public function mdlMostrarUsuarios($tabla, $item, $valor){
 
         if($item != null){
@@ -52,23 +54,37 @@ class ModeloUsuarios{
 
     static public function mdlEditarUsuario($tabla, $datos){
 
-        $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET nombre =:nombre, apellido_paterno =:apellidoPaterno,
-        apellido_materno =:apellidoMaterno, password =:password, perfil =: perfil, foto =:foto WHERE usuario =:usuario");
+        try{
+            $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido_paterno = :apellidoPaterno,
+            apellido_materno = :apellidoMaterno, password = :password, perfil = :perfil, foto = :foto WHERE usuario = :usuario");
+    
+            // $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            // $stmt -> bindParam(":apellidoPaterno", $datos["apellidoPaterno"], PDO::PARAM_STR);
+            // $stmt -> bindParam(":apellidoMaterno", $datos["apellidoMaterno"], PDO::PARAM_STR);
+            // $stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
+            // $stmt -> bindParam(":perfil", $datos["perfil"], PDO::PARAM_INT);
+            // $stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+            // $stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
 
-        $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt -> bindParam(":apellidoPaterno", $datos["apellidoPaterno"], PDO::PARAM_STR);
-        $stmt -> bindParam(":apellidoMaterno", $datos["apellidoMaterno"], PDO::PARAM_STR);
-        $stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
-        $stmt -> bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
-        $stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
-        $stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+            $stmt -> bindValue(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            $stmt -> bindValue(":apellidoPaterno", $datos["apellidoPaterno"], PDO::PARAM_STR);
+            $stmt -> bindValue(":apellidoMaterno", $datos["apellidoMaterno"], PDO::PARAM_STR);
+            $stmt -> bindValue(":password", $datos["password"], PDO::PARAM_STR);
+            $stmt -> bindValue(":perfil", $datos["perfil"], PDO::PARAM_INT);
+            $stmt -> bindValue(":foto", $datos["foto"], PDO::PARAM_STR);
+            $stmt -> bindValue(":usuario", $datos["usuario"], PDO::PARAM_STR);
+    
+            $query = $stmt->queryString;
 
-        if($stmt->execute()){
-
-            return "ok";
-        }else{
-
-            return "error";
+            var_dump($query);
+    
+            if($stmt->execute()){
+    
+                return "ok";
+            }
+        }
+        catch (Exception $e){
+            echo "Error: ".$e->getMessage()."\n";            
         }
 
         $stmt = null;

@@ -207,7 +207,23 @@ class ControladorUsuarios{
                 // Validar Imagen
                 $ruta = $_POST["fotoActual"];
 
-                if(isset($_FILES["editarFoto"]["tmp_name"])){
+                if(isset($_FILES["editarFoto"]["tmp_name"]) && !empty($_FILES["editarFoto"]["tmp_name"])){
+                    
+                    $directorio = "vistas/img/usuarios/".$_POST["editarUsuario"];
+
+                    // Existe el directorio del usuario?
+                    if(!file_exists($directorio)){
+                        mkdir($directorio, 0755);
+                    }
+                    
+                    // Existe foto del usario?
+                    if(!empty($_POST["fotoActual"])){
+
+                        if(!file_exists($_POST["fotoActual"])){
+
+                            unlink($_POST["fotoActual"]);
+                        }                   
+                    }
 
                     // Obtener ancho y largo
                     list($ancho, $alto) = getimagesize($_FILES["editarFoto"]["tmp_name"]);
@@ -215,28 +231,13 @@ class ControladorUsuarios{
                     $nuevoAncho = 50;
                     $nuevoAlto = 50;
 
-                    // Creando el directorio para guardar la foto
-                    $directorio = "vistas/img/usuarios/".$_POST["editarUsuario"];
-
-                    if(!empty($_POST["fotoActual"])){
-
-                        if(!file_exists($directorio)){
-
-                            unlink($_POST["fotoActual"]);
-                        }                   
-                    }
-
-                    if(!file_exists($directorio)){
-                        mkdir($directorio, 0755);
-                    }
-
                     // Damos tratamiento en base al tipo de imagen JPG
                     if($_FILES["editarFoto"]["type"] == "image/jpeg"){
 
                         $aleatorio = mt_rand(100, 999);
                         $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".jpg";
 
-                        $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+                        $origen = imagecreatefromjpeg($_FILES["editarFoto"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                         imagecopyresized(
                             $destino,
@@ -275,7 +276,6 @@ class ControladorUsuarios{
                         );
                         imagepng($destino, $ruta);
                     }
-
                 }
 
                 $tabla = "usuarios";
@@ -312,6 +312,7 @@ class ControladorUsuarios{
                 }
 
                 $datos = array(
+                    "usuario" => $_POST["editarUsuario"], 
                     "nombre" => $_POST["editarNombre"],
                     "apellidoPaterno" => $_POST["editarApellidoPaterno"],
                     "apellidoMaterno" => $_POST["editarApellidoMaterno"],
@@ -319,6 +320,8 @@ class ControladorUsuarios{
                     "perfil" => $_POST["editarPerfil"],
                     "foto" => $ruta
                 );
+
+                var_dump($datos);
 
                 $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
 
@@ -341,29 +344,51 @@ class ControladorUsuarios{
                         });
 
                     </script>';
+
+                }else{
+                    
+                    echo 
+                    '<script>
+
+                        swal({
+                            type: "error",
+                            title: "¡No se actualizo el usuario, revise sus datos!"'.$respuesta.',
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        }).then((result) => {
+                            if(result.value){
+                                
+                                window.location = "usuarios";
+                            }
+                        });
+
+                    </script>';
+
                 }
 
+            }else{
+
+                echo 
+                '<script>
+    
+                    swal({
+                        type: "error",
+                        title: "¡El nombre de usuario no puede ir vacio o llevar caracteres especiales!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }).then((result) => {
+                        if(result.value){
+                            
+                            window.location = "usuarios";
+                        }
+    
+                    });
+    
+                </script>';
+                
             }
-        }else{
-
-            echo 
-            '<script>
-
-                swal({
-                    type: "error",
-                    title: "¡El nombre de usuario no puede ir vacio o llevar caracteres especiales!",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar",
-                    closeOnConfirm: false
-                }).then((result) => {
-                    if(result.value){
-                        
-                        window.location = "usuarios";
-                    }
-
-                });
-
-            </script>';
         }
     }
 }

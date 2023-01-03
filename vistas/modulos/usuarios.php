@@ -94,7 +94,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Inicia - Ventana modal: agregar usuario -->
+<!-- Ventana modal: agregar usuario -->
 <div id="modalAgregarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -186,7 +186,7 @@
 </div>
 <!-- Termina - Ventana modal: agregar usuario -->
 
-<!-- Inicia: Ventana modal editar usuario -->
+<!-- Ventana modal editar usuario -->
 <div id="modalEditarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -238,7 +238,7 @@
               <div class="input-group">
                 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-sm" name="editarPassword" placeholder="Escriba la nueva contraseña" required>
+                <input type="password" class="form-control input-sm" name="editarPassword" placeholder="Escriba la nueva contraseña">
 
                 <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
@@ -283,4 +283,4 @@
     </div>
   </div>
 </div>
-<!-- Termina: Ventana modal editar usuario -->
+<!-- Termina-Ventana modal editar usuario -->

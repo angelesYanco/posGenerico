@@ -82,7 +82,6 @@ $(".btnEditarUsuario").click(function(){
             $("#editarPerfil").val(respuesta["perfil"]);
             $("#fotoActual").val(respuesta["foto"]);
 
-
             $("#passwordActual").val(respuesta["password"]);
 
             if(respuesta["foto"] != ""){
