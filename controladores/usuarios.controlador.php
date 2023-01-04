@@ -22,17 +22,24 @@ class ControladorUsuarios{
                 if($respuesta["usuario"] == $_POST["ingUsuario"] &&
                     $respuesta["password"] == $encriptar){
 
-                    $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id_usuario"];
-                    $_SESSION["nombreCompleto"] = $respuesta["nombre"].' '.$respuesta["apellido_paterno"].' '.$respuesta["apellido_materno"];
-                    $_SESSION["usuario"] = $respuesta["usuario"];
-                    $_SESSION["foto"] = $respuesta["foto"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
+                    if($respuesta["estado"] == 1){
 
-                    echo '<script>
-                    
-                        window.location = "inicio";
-                    </script>';
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id_usuario"];
+                        $_SESSION["nombreCompleto"] = $respuesta["nombre"].' '.$respuesta["apellido_paterno"].' '.$respuesta["apellido_materno"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["foto"] = $respuesta["foto"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
+    
+                        echo '<script>
+                        
+                            window.location = "inicio";
+                        </script>';
+                    }else{
+
+                        echo '<br><div class="alert alert-danger">El usuario no esta activo en el sistema!</div>';
+                    }
+
                 }else{
 
                     echo '<br><div class="alert alert-danger">Error al ingresar, vuelva a intentarlo</div>';
@@ -195,7 +202,6 @@ class ControladorUsuarios{
         return $respuesta;
     }
 
-    // Editar Usuario
     static function ctrEditarUsuario(){
 
         if(isset($_POST["editarUsuario"])){

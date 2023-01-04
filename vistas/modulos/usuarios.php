@@ -64,10 +64,12 @@
                 echo
                   '<td>'.$value["perfil_nombre"].'</td>';
 
-                if($value["estado"] < 1){
-                  echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="0">Desactivado</button></td>';
+                if($value["estado"] != 0){
+                  
+                  echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="0">Activado</button></td>';
                 }else{
-                  echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="1">Activado</button></td>';
+
+                  echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="'.$value["id_usuario"].'" estadoUsuario="1">Desactivado</button></td>';                  
                 }
                   
                 echo '<td>'.$value["fecha_ultimo_login"].'</td>';
