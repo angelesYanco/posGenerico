@@ -5,9 +5,8 @@ require_once "../modelos/usuarios.modelo.php";
 
 class AjaxUsuarios{
 
-    public $idUsuario;
-
     //Editar usuarios
+    public $idUsuario;
     public function ajaxEditarUsuario(){
 
         $item = "id_usuario";
@@ -19,9 +18,9 @@ class AjaxUsuarios{
 
     }
 
+    // Activar usuario
     public $activarUsuario;
     public $activarId;
-
     public function ajaxActivarUsuario(){
 
         $tabla = "usuarios"; 
@@ -36,6 +35,18 @@ class AjaxUsuarios{
 
     }
     
+    //Validar usuario
+    public $validarUsuario;
+    public function ajaxValidarUsuario(){
+
+        $item = "usuario";
+        $valor = $this->validarUsuario;
+
+        $respuesta = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+
+        echo json_encode($respuesta);
+    }
+
 }
 
 //Editar usuario enlace con ajax
@@ -55,3 +66,10 @@ if(isset($_POST["activarUsuario"])){
     $activarUsuario->ajaxActivarUsuario();
 }
 
+//Validar Usuario
+if(isset($_POST["validarUsuario"])){
+
+    $validarUsuario = new AjaxUsuarios();
+    $validarUsuario -> validarUsuario = $_POST["validarUsuario"];
+    $validarUsuario -> ajaxValidarUsuario();
+}
