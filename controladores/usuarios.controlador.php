@@ -417,4 +417,63 @@ class ControladorUsuarios{
             }
         }
     }
+
+    static function ctrBorrarUsuario(){
+
+        if(isset($_GET["idUsuario"])){
+
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
+            
+            if($_GET["fotoUsuario"] != ""){
+
+                if(file_exists($_GET["fotoUsuario"])){
+
+                    unlink($_GET["fotoUsuario"]);
+                }                
+            }
+
+            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+
+            if($respuesta == "ok"){
+
+                echo 
+                    '<script>
+
+                        swal({
+                            type: "success",
+                            title: "¡El usuario ha sido borrado correctamente!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        }).then((result) => {
+                            if(result.value){
+                                
+                                window.location = "usuarios";
+                            }
+                        });
+
+                    </script>';                
+            }else{
+
+                echo 
+                '<script>
+
+                    swal({
+                        type: "error",
+                        title: "¡No se ha borrado el usuario!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }).then((result) => {
+                        if(result.value){
+                            
+                            window.location = "usuarios";
+                        }
+                    });
+
+                </script>';                
+            }
+        }
+    }
 }

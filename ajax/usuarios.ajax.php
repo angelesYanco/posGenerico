@@ -23,6 +23,13 @@ class AjaxUsuarios{
     public $activarId;
     public function ajaxActivarUsuario(){
 
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+
+        $fechaActual = $fecha.' '.$hora;
+
         $tabla = "usuarios"; 
 
         $item1 = "estado"; 
@@ -31,7 +38,10 @@ class AjaxUsuarios{
         $item2 = "id_usuario"; 
         $valor2 = $this->activarId;
 
-        $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+        $item3 = "fecha_activacion"; 
+        $valor3 = $fechaActual;
+
+        $respuesta = ModeloUsuarios::mdlActivarUsuario($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3);
 
     }
     
@@ -73,3 +83,5 @@ if(isset($_POST["validarUsuario"])){
     $validarUsuario -> validarUsuario = $_POST["validarUsuario"];
     $validarUsuario -> ajaxValidarUsuario();
 }
+
+// Eliminar Usuario

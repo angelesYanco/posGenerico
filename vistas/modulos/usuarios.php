@@ -79,7 +79,7 @@
                     <div class="btn-group">
                       <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id_usuario"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
 
-                      <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                      <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["id_usuario"].'" fotoUsuario="'.$value["foto"].'"><i class="fa fa-times"></i></button>
                     </div>
                   </td>                
                 </tr>';              
@@ -109,6 +109,7 @@
 
         <div class="modal-body">        
           <div class="box-body">
+
             <!-- Nombre -->
             <div class="form-group">            
               <div class="input-group">
@@ -141,6 +142,7 @@
                 <input type="text" class="form-control input-sm" name="nuevoUsuario" placeholder="Usuario" id="nuevoUsuario" required>
               </div>
             </div>
+
             <!-- Password -->
             <div class="form-group">
               <div class="input-group">
@@ -162,14 +164,17 @@
                 </select>
               </div>
             </div>
-            <!-- Entrada para seleccion de perfil -->
+
+            <!-- Entrada para seleccion foto -->
             <div class="form-group">
               <input type="file" class="nuevaFoto" name="nuevaFoto">
               <p class="help-block">Peso máximo de la foto: 2 MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="60px">
             </div>
+
           </div>
         </div>
+
         <!-- Footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
@@ -286,3 +291,11 @@
   </div>
 </div>
 <!-- Termina-Ventana modal editar usuario -->
+
+<!-- Borrado Logico de Usuarios -->
+<?php
+
+$borrarUsuario = new ControladorUsuarios();
+$borrarUsuario -> ctrBorrarUsuario();
+
+?>

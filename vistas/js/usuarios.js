@@ -1,5 +1,4 @@
-/* Subiendo la foto del usuario */
-
+// Subiendo la foto del usuario
 $(".nuevaFoto").change(function(){
 
     var imagen = this.files[0];
@@ -45,7 +44,6 @@ $(".nuevaFoto").change(function(){
         })
     }
 });
-
 
 // Editar usuario
 $(".btnEditarUsuario").click(function(){
@@ -151,6 +149,30 @@ $("#nuevoUsuario").change(function(){
                 $("#nuevoUsuario").parent().after('<div class="alert alert-warning">El usuario ' + usuario + ' ya existe en la base de datos!</div>')
                 $("#nuevoUsuario").val('');
             }
+        }
+    });
+});
+
+// Borrado logico de Usuario
+$(".btnEliminarUsuario").click(function(){
+
+    var idUsuario = $(this).attr("idUsuario");
+    var fotoUsuario = $(this).attr("fotoUsuario");
+
+    swal({
+        title: '¿Estas seguro de borrar el usuario?',
+        text: "¡Si no esta seguro puede cancelar la acción!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: '¡Si, borrar usuario!',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      
+        if(result.value){
+
+            window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&fotoUsuario="+fotoUsuario;
         }
     });
 });
