@@ -70,8 +70,8 @@ session_start();
   <script src="vistas/plugins/custom/sweetalert2.all.min.js"></script>
   
   <!-- Correccion al error Sweetalert2 en Internet Explorer -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core.js/2.4.1/core.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script> -->
 
 </head>
 
