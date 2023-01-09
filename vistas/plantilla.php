@@ -66,8 +66,12 @@ session_start();
   <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
   <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
-    <!-- Custom -->
-    <script src="vistas/plugins/custom/sweetalert2.all.min.js"></script>
+  <!-- Custom -->
+  <script src="vistas/plugins/custom/sweetalert2.all.min.js"></script>
+  
+  <!-- Correccion al error Sweetalert2 en Internet Explorer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core.js/2.4.1/core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
 
 </head>
 

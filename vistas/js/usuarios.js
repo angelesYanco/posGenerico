@@ -168,7 +168,7 @@ $(".btnEliminarUsuario").click(function(){
         confirmButtonText: '¡Si, borrar usuario!',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar'
-    }).then((result) => {
+    }).then(function(result){
       
         if(result.value){
 
