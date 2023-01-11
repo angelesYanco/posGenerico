@@ -57,7 +57,7 @@
 </div>
 
 <!--=====================================
-MODAL: AGREGAR CATEGORIA
+MODAL AGREGAR CATEGORIA
 ======================================-->
 
 <div id="modalAgregarCategoria" class="modal fade" role="dialog">  
@@ -94,17 +94,6 @@ MODAL: AGREGAR CATEGORIA
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Guardar categoria</button>
         </div>
-
-        <!--=====================================
-        CONTROLADOR DE LA CATEGORIA
-        ======================================-->
-
-        <?php
-        
-        $crearCategoria = new ControladorCategorias();
-        $crearCategoria -> ctrCrearCategoria();
-
-        ?>
       </form>
 
     </div>
