@@ -30,6 +30,7 @@
           <thead>
             <tr>
               <th style="width:10px">#</th>
+              <th style="width:10px">Id</th>
               <th>Nombre completo</th>
               <th>Usuario</th>
               <th>Foto</th>
@@ -50,6 +51,7 @@
 
                 echo 
                   '<tr>
+                  <td>'.($key + 1).'</td>
                   <td>'.$value["id_usuario"].'</td>
                   <td>'.$value["nombre"].' '.$value["apellido_paterno"].' '.$value["apellido_materno"].'</td>
                   <td>'.$value["usuario"].'</td>';

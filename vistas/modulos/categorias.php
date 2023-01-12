@@ -33,22 +33,35 @@
         <thead>
          <tr>
            <th style="width:10px">#</th>
+           <th style="width:10px">Id</th>
            <th>Nombre</th>
            <th>Acciones</th>
          </tr> 
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>EQUIPOS ELECTROMECANICOS</td>
-            <td>
-              <div class="btn-group">                  
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-              </div>  
 
-            </td>
-          </tr>
+        <?php
+          $item = null;
+          $valor = null;
+
+          $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+          foreach($categorias as $key => $value){
+
+            echo 
+            '<tr>
+              <td>'.($key + 1).'</td>
+              <td>'.$value["id_categoria"].'</td>
+              <td class="text-uppercase">'.$value["categoria"].'</td>
+              <td>
+                <div class="btn-group">                  
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </div>  
+              </td>
+            </tr>';
+          }
+        ?>          
         </tbody>
        </table>
       </div>
