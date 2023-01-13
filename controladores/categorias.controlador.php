@@ -75,6 +75,8 @@ class ControladorCategorias{
     static public function ctrEditarCategoria(){
         
         if(isset($_POST["editarCategoria"])){
+            
+            echo '<p>Hola</p>';
 
             if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarCategoria"])){
 
@@ -83,15 +85,32 @@ class ControladorCategorias{
                                 "id_categoria"=>$_POST["idCategoria"]);
 
                 $respuesta = ModeloCategorias::mdlEditarCategoria($tabla, $datos);
+      
                 
-                if($respuesta == "ok"){
 
+                if($respuesta == "ok"){
+                    
+                    print('<p>Hola</p>');
+
+                    echo "<script>
+                        swal({
+                            type: 'success',
+                            title: 'La categoria ha sido actualizada.',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false
+                            }).then((result) => {
+                                if(result.value){
+                                    window.location = 'categorias';
+                                }
+                            })
+                    </script>";
+                }else{
                     echo '<script>
                         swal({
-                            type: "success",
-                            title: "La categoria ha sido cambiada correctamente.",
+                            type: "error",
+                            title: "¡La categoria no se actualizo, revise sus datos!",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar",
                             closeOnConfirm: false
                             }).then((result) => {
                                 if(result.value){
@@ -99,23 +118,7 @@ class ControladorCategorias{
                                 }
                             })
                         </script>';
-                }else{
-
-                    echo '<script>
-                    swal({
-                        type: "error",
-                        title: "¡La categoria no se actualizo, revise sus datos!",
-                        showConfirmButton: true,
-                        closeOnConfirm: false
-                        }).then((result) => {
-                            if(result.value){
-                                window.location = "categorias";
-                            }
-                        })
-                    </script>';
-                    
-                }
-                
+                }                
             }else{
 
                 echo '<script>

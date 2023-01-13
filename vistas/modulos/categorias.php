@@ -166,13 +166,12 @@ MODAL: EDITAR CATEGORIA
         <!--=====================================
         CONTROLADOR DE LA CATEGORIA
         ======================================-->
-
-        <!-- <?php
+        <?php
         
         $editarCategoria = new ControladorCategorias();
         $editarCategoria -> ctrEditarCategoria();
 
-        ?> -->
+        ?>
       </form>
 
     </div>
