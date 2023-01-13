@@ -17,7 +17,9 @@ $(".btnEditarCategoria").click(function(){
         success: function(respuesta){
 
             $("#editarCategoria").val(respuesta["categoria"]);
-            $("#idCategoria").val(respuesta["idCategoria"]);
+            $("#idCategoria").val(respuesta["id_categoria"]);
+
+            
         }
     })
 

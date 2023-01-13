@@ -47,10 +47,10 @@ class ModeloCategorias{
 
     static public function mdlEditarCategoria($tabla, $datos){
 
-        $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET categoria= :categoria WHERE id_categoria= :idCategoria)");
+        $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET categoria= :categoria WHERE id_categoria= :id_categoria");
 
         $stmt -> bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
-        $stmt -> bindParam(":idCategoria", $datos["idCategoria"], PDO::PARAM_STR);
+        $stmt -> bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_STR);
 
         if($stmt->execute()){
 

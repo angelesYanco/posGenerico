@@ -28,6 +28,21 @@ class ControladorCategorias{
                                 }
                             })
                     </script>';
+                }else{
+
+                    echo '<script>
+                    swal({
+                        type: "error",
+                        title: "¡La categoria no se actualizo, revise sus datos!",
+                        showConfirmButton: true,
+                        closeOnConfirm: false
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = "categorias";
+                            }
+                        })
+                    </script>';
+                    
                 }
             }else{
 
@@ -65,10 +80,10 @@ class ControladorCategorias{
 
                 $tabla = "categorias";
                 $datos = array("categoria"=>$_POST["editarCategoria"],
-                            "idCategoria"=>$_POST["idCategoria"]);
+                                "id_categoria"=>$_POST["idCategoria"]);
 
                 $respuesta = ModeloCategorias::mdlEditarCategoria($tabla, $datos);
-
+                
                 if($respuesta == "ok"){
 
                     echo '<script>
@@ -83,8 +98,24 @@ class ControladorCategorias{
                                     window.location = "categorias";
                                 }
                             })
+                        </script>';
+                }else{
+
+                    echo '<script>
+                    swal({
+                        type: "error",
+                        title: "¡La categoria no se actualizo, revise sus datos!",
+                        showConfirmButton: true,
+                        closeOnConfirm: false
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = "categorias";
+                            }
+                        })
                     </script>';
+                    
                 }
+                
             }else{
 
                 echo '<script>
