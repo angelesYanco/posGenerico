@@ -24,3 +24,26 @@ $(".btnEditarCategoria").click(function(){
     })
 
 })
+
+//Eliminar categoria
+$(".btnEliminarCategoria").click(function(){
+
+    var idCategoria = $(this).attr("idCategoria");
+
+    swal({
+        title: 'Esta seguro de borrar la categoria?',
+        text: 'Si no esta seguro puede cancelar la acción',
+        type:'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar categoria!'
+        }).then((result) => {
+           
+            if(result.value){
+
+                window.location = 'index.php?ruta=categorias&idCategoria='+idCategoria;
+            }
+        })
+})

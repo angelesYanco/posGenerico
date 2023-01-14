@@ -55,7 +55,8 @@
               <td>
                 <div class="btn-group">                  
                   <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id_categoria"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+                  <button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["id_categoria"].'"><i class="fa fa-times"></i></button>
                 </div>  
               </td>
             </tr>';
@@ -179,3 +180,10 @@ MODAL: EDITAR CATEGORIA
   </div>
 
 </div>
+
+<?php
+
+  $borrarCategoria = new ControladorCategorias();
+  $borrarCategoria -> ctrBorrarCategoria();
+
+?>

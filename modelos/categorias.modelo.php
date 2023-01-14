@@ -35,7 +35,7 @@ class ModeloCategorias{
 
         }else{
 
-            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt = ConexionBD::conectar()->prepare("SELECT * FROM $tabla WHERE estado >= 0");
 
             $stmt -> execute();
 
@@ -47,14 +47,21 @@ class ModeloCategorias{
 
     static public function mdlEditarCategoria($tabla, $datos){
 
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+        $fechaActual = $fecha.' '.$hora;
+
         $respuesta = "";
 
         try{
 
-            $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET categoria= :categoria WHERE id_categoria= :id_categoria");
+            $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET categoria= :categoria, fecha_actualizacion = :fecha_actualizacion WHERE id_categoria= :id_categoria");
 
             $stmt -> bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
             $stmt -> bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_STR);
+            $stmt -> bindParam(":fecha_actualizacion", $fechaActual, PDO::PARAM_STR);
 
             $stmt->execute();
             
@@ -68,5 +75,29 @@ class ModeloCategorias{
         $stmt = null;
         
         return $respuesta;
+    }
+
+    static public function mdlBorrarCategoria($tabla, $datos){
+
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+        $fechaActual = $fecha.' '.$hora;
+
+        $stmt = ConexionBD::conectar()->prepare("UPDATE $tabla SET estado = -1, fecha_baja = :fecha_baja WHERE id_categoria= :id_categoria");
+
+        $stmt -> bindParam(":id_categoria", $datos, PDO::PARAM_INT);
+        $stmt -> bindParam(":fecha_baja", $fechaActual, PDO::PARAM_STR);
+
+        if($stmt->execute()){
+
+            return "ok";
+        }else{
+
+            return "error";
+        }
+
+        $stmt = null;
     }
 }

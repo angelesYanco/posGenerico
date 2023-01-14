@@ -85,12 +85,8 @@ class ControladorCategorias{
                                 "id_categoria"=>$_POST["idCategoria"]);
 
                 $respuesta = ModeloCategorias::mdlEditarCategoria($tabla, $datos);
-      
-                
 
                 if($respuesta == "ok"){
-                    
-                    print('<p>Hola</p>');
 
                     echo "<script>
                         swal({
@@ -135,5 +131,33 @@ class ControladorCategorias{
                 </script>';
             }
         }        
+    }
+
+    static public function ctrBorrarCategoria(){
+
+        if(isset($_GET["idCategoria"])){
+
+            $tabla = "categorias";
+            $datos = $_GET["idCategoria"];
+
+            $respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos);
+
+            if($respuesta == "ok"){
+
+                echo "<script>
+                    swal({
+                        type: 'success',
+                        title: 'La categoria ha sido borrada.',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar',
+                        closeOnConfirm: false
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'categorias';
+                            }
+                        })
+                </script>";  
+            }
+        }
     }
 }
