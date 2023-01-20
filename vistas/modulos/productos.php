@@ -133,9 +133,9 @@ MODAL AGREGAR PRODUCTO
               </div>
             </div>
 
+            <!-- ENTRADA PARA STOCK Y PRECIO DE VENTA -->
             <div class="form-group row">
-              <div class="col-xs-6">
-                <!-- ENTRADA PARA STOCK -->
+              <div class="col-xs-6">                
                 <div class="form-group">              
                   <div class="input-group">              
                     <span class="input-group-addon"><i class="fa fa-hashtag"></i></span> 
@@ -143,9 +143,8 @@ MODAL AGREGAR PRODUCTO
                   </div>
                 </div>
               </div>
-
+              <!-- ENTRADA PARA PRECIO DE COMPRA -->
               <div class="col-xs-6">
-                <!-- ENTRADA PARA PRECIO DE COMPRA -->
                 <div class="input-group">              
                   <span class="input-group-addon"><i class="fa fa-usd"></i></span> 
                   <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" placeholder="Precio de Compra" required>
@@ -154,41 +153,45 @@ MODAL AGREGAR PRODUCTO
             </div>
 
             <div class="form-group row">
-              <div class="col-xs-6">
-                <!-- ENTRADA PARA PRECIO DE VENTA -->
+              <!-- ENTRADA PARA PRECIO DE VENTA -->
+              <div class="col-xs-6">                
                 <div class="input-group">              
                   <span class="input-group-addon"><i class="fa fa-usd"></i><i class="fa fa-usd"></i></span> 
                   <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" placeholder="Precio de Venta" required>
                 </div>
               </div>
+
               <!-- Checkbox para aplicar porcentaje en el calculo del precio de venta con base en el precio de compra. -->
-              <div class="col-xs-6">
+              <div class="col-xs-3">
                 <div class="form-group">
                   <label >
                     <input type="checkbox" class="minimal porcentaje" checked>
                     Utilizar porcentaje
-                    <div class="input-group">
-                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                  </div>
                   </label>
                 </div>
-                <div class="col-xs-4" style="padding:0">
-                  <div class="input-group">
-                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                  </div>
+              </div>
+
+              <!-- Entrada para porcentaje -->
+              <div class="col-xs-3" >
+                <div class="input-group">
+                  <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+                  <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                 </div>
               </div>
             </div>
 
             <!-- ENTRADA PARA SUBIR IMAGEN -->
-             <div class="form-group">
-              <div class="panel">SUBIR IMAGEN</div>
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
-              <p class="help-block">Peso máximo de la foto 2 MB</p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+            <div class="form-group row">
+              <div class="col-xs-6">
+                <div class="panel">SUBIR IMAGEN:  
+                  <p class="help-block"> Peso máximo de la foto 2 MB</p>                
+                </div>                
+                <input type="file" id="nuevaImagen" name="nuevaImagen">              
+              </div>
 
+              <div class="col-xs-6"  style="padding: 10">
+                <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px" style="float: center">
+              </div>
             </div>
           </div>
         </div>

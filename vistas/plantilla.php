@@ -41,6 +41,9 @@ session_start();
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
 
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -68,10 +71,13 @@ session_start();
 
   <!-- Custom -->
   <script src="vistas/plugins/custom/sweetalert2.all.min.js"></script>
-  
+    
   <!-- Correccion al error Sweetalert2 en Internet Explorer -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script> -->
+
+  <!-- iCheck 1.0.1 -->
+  <script src="../../plugins/iCheck/icheck.min.js"></script>
 
 </head>
 
